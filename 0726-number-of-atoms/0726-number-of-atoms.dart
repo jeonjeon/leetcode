@@ -4,125 +4,49 @@ class Solution {
   final a = 'a'.codeUnitAt(0);
   final z = 'z'.codeUnitAt(0);
 
-  String countOfAtoms(String f) {
-    final stack = <Map<String,int>>[];
-    var cur = '';
-    int cnt = 0;
-    for (int i = 0; i < f.length; i++){
-      final n = int.tryParse(f[i]);
-      // 숫자인데 cur 비었으면
-      if (n != null && cur.isEmpty){
-        cnt *= 10;
-        cnt += n!;
-        continue;
-      }
-      // 숫자인데 cur 안비었으면
-      if (n != null && cur.isEmpty){
-        cur += f[i];
-        continue;
-      }
-      // 숫자아니고 cnt > 0인데 
-      if(cnt > 0){
-        final last = stack.removeLast();
-        for (final ent in last.entries){
-          last[ent.key] = ent.value * cnt;
+  String countOfAtoms(String formula) {
+    final stack = <Map<String, int>>[{}];
+    var i = 0;
+
+    while (i < formula.length) {
+      if (formula[i] == '(') {
+        stack.add({});
+        i++;
+      } else if (formula[i] == ')') {
+        i++;
+        var num = 0;
+        while (i < formula.length && formula[i].codeUnitAt(0).isDigit) {
+          num = num * 10 + int.parse(formula[i]);
+          i++;
         }
-        if (stack.isNotEmpty){
-          final prev = stack.removeLast();
-          for (final ent in prev.entries){
-            last[ent.key] = (last[ent.key] ?? 0) + ent.value;
-          }
-        }
-        var result = last.entries.map((e) => '${e.key}${e.value == 1 ? "" : e.value}').toList()..sort((a, b) => a.compareTo(b));
-        cur = result.join('');
-        //print('cur: $cur, stack: $stack');
-        cnt = 0;
-      }
-      // 괄호열고면 
-      if (f[i] == '('){
-        if (cur.length > 0){
-          stack.add(toMap(cur));
-        }
-        cur = '';
-        continue;
-      }
-      // 괄호닫고면
-      if (f[i] == ')'){
-        stack.add(toMap(cur));
-        cur = '';
-        continue;
-      }
-      // 숫자 아니고 cur도 비었고 괄호도 아니면 문자다
-      cur += f[i];
-    }
-    //print('stack: $stack, cnt: $cnt');
-    var res = <String, int>{};
-    if (stack.isNotEmpty) {
-      res = stack.removeLast();
-    }
-    // 카운트 남았으면 곱해
-    if (cnt > 0){
-      for (final ent in res.entries){
-        res[ent.key] = ent.value * cnt;
-      }
-      cnt = 0;
-    }
-    //print('res: $res, cnt: $cnt');
-    // 남은 stack이나 cur있으면 쥐어짬
-    if (cur.isNotEmpty){
-      final inner = toMap(cur);
-      for (final ent in inner.entries){
-        res[ent.key] = (res[ent.key] ?? 0) + ent.value;
-      }
-    } 
-    if (stack.isNotEmpty){
-      final last = stack.last;
-      for (final ent in last.entries){
-        res[ent.key] = (res[ent.key] ?? 0) + ent.value;
+        num = num == 0 ? 1 : num;
+        final top = stack.removeLast();
+        final last = stack.last;
+        top.forEach((k, v) => last[k] = (last[k] ?? 0) + v * num);
+      } else {
+        var start = i;
+        i++;
+        while (i < formula.length && formula[i].codeUnitAt(0).isLowerCase) i++;
+        final name = formula.substring(start, i);
+        start = i;
+        while (i < formula.length && formula[i].codeUnitAt(0).isDigit) i++;
+        final num = start < i ? int.parse(formula.substring(start, i)) : 1;
+        final last = stack.last;
+        last[name] = (last[name] ?? 0) + num;
       }
     }
-    var result = res.entries.map((e) => '${e.key}${e.value == 1 ? "" : e.value}').toList()..sort((a, b) => a.compareTo(b));
-    //print(result);
+
+    final result = <String>[];
+    final countMap = stack.last;
+    final sortedKeys = countMap.keys.toList()..sort();
+    for (final key in sortedKeys) {
+      result.add(key + (countMap[key] == 1 ? '' : countMap[key].toString()));
+    }
     return result.join('');
   }
+}
 
-  // 원소 맵으로 추출하는 함수
-  Map<String, int> toMap(String cur){
-    if (cur.isEmpty) return {};
-    final res = <String, int>{};
-    var atom = '';
-    int cnt = 0;
-    for (int i = 0; i < cur.length; i++){
-      final n = int.tryParse(cur[i]);
-      // 숫자일때
-      if (n != null){
-        cnt *= 10;
-        cnt += n!;
-        continue;
-      } 
-      final code = cur.codeUnitAt(i);
-      // 소문자일때
-      if (code >= a && code <= z){
-        atom += cur[i];
-        continue;
-      }
-      // 대문자일때
-      if (code >= A && code <= Z){
-        // 기존 atom이 있을 때
-        if (atom.isNotEmpty){
-          res[atom] = (res[atom] ?? 0) + (cnt == 0 ? 1 : cnt);
-          atom = '';
-          cnt = 0;
-        }
-        atom += cur[i];
-        continue;
-      }
-    }
-    if (atom.isNotEmpty){
-      res[atom] = (res[atom] ?? 0) + (cnt == 0 ? 1 : cnt);
-      atom = '';
-      cnt = 0;
-    }
-    return res;
-  }
+extension on int {
+  bool get isDigit => this >= '0'.codeUnitAt(0) && this <= '9'.codeUnitAt(0);
+  bool get isLowerCase => this >= 'a'.codeUnitAt(0) && this <= 'z'.codeUnitAt(0);
 }
