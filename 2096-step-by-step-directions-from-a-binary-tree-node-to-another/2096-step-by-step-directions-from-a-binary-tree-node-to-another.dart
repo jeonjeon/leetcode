@@ -35,28 +35,61 @@ class Solution {
     return '';
   }
   
-  // Find Lowest Common Ancestor
   TreeNode? getLca(TreeNode? root, int sv, int dv) {
     if (root == null) return null;
-    if (root.val == sv || root.val == dv) {
-      return root;
+    
+    // Map to store parent of each node
+    final parentMap = <int, TreeNode?>{};
+    final queue = Queue<TreeNode>();
+    queue.add(root);
+    parentMap[root.val] = null;
+    
+    // BFS to traverse the tree and record parent nodes
+    while (!queue.isEmpty && (parentMap[sv] == null || parentMap[dv] == null)) {
+      final node = queue.removeFirst();
+      
+      if (node.left != null) {
+        queue.add(node.left!);
+        parentMap[node.left!.val] = node;
+      }
+      if (node.right != null) {
+        queue.add(node.right!);
+        parentMap[node.right!.val] = node;
+      }
     }
-    final left = getLca(root.left, sv, dv);
-    final right = getLca(root.right, sv, dv);
-    if (left != null && right != null) {
-      return root;
+    
+    // Store ancestors of sv in a set
+    final ancestors = Set<int>();
+    var current = sv;
+    while (parentMap[current] != null) {
+      ancestors.add(current);
+      current = parentMap[current]!.val;
     }
-    if (left != null) {
-      root.right = null;
-      return left;
-    } 
-    if (right != null) {
-      root.left = null;
-      return right;
+    ancestors.add(root.val);
+    
+    // Start from dv and find the first common ancestor
+    current = dv;
+    while (!ancestors.contains(current)) {
+      current = parentMap[current]!.val;
     }
-    // Optimize by pruning unnecessary branches
-    root.left = null;
-    root.right = null;
+    
+    // We've found the LCA, return the node
+    return findNode(root, current);
+  }
+
+  // Helper function to find a node with a given value
+  TreeNode? findNode(TreeNode? root, int value) {
+    if (root == null) return null;
+    final queue = Queue<TreeNode>();
+    queue.add(root);
+    
+    while (!queue.isEmpty) {
+      final node = queue.removeFirst();
+      if (node.val == value) return node;
+      if (node.left != null) queue.add(node.left!);
+      if (node.right != null) queue.add(node.right!);
+    }
+    
     return null;
   }
 }
