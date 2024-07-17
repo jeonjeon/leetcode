@@ -31,5 +31,4 @@ class Solution:
             node.right = None
           dfs(node, right)
       dfs(None, root)
-      print(res)
       return res
