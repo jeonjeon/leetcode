@@ -3,34 +3,30 @@ import 'dart:collection';
 class Solution {
   final sett = <int>{};
   bool canPartitionKSubsets(List<int> nums, int k) {
-    final sum = nums.reduce((a, b) => a + b);
-    if (sum % k > 0) return false;
-    final div = sum ~/ k;
-    if (nums.any((n) => n > div)) return false;
-    final total = pow(2, nums.length) - 1;
-    // print('total: $total');
-    final arr = <int>[];
-    for (int i = 1; i <= total; i++){
-      int cur = 0;
-      for (int j = 0; j < nums.length; j++){
-        if ((1 << j) & i > 0){
-          cur += nums[j];
-        }
-        if (cur > div) break;
-      }
-      if (cur == div) arr.add(i);
-    }
-    // print(arr.reduce((a, b) => a | b));
-    final q = Queue<int>.from(arr);
+    final totalSum = nums.reduce((a, b) => a + b);
+    // if sum can not be divided by k return false
+    if (totalSum % k > 0) return false;
+    final partitionSum = totalSum ~/ k;
+    final mask = (pow(2, nums.length) - 1).toInt();
+    final partitions = List.generate(mask + 1, (i) => i)
+                           .where((i) => canPartitionSum(i, partitionSum, nums))
+                           .toList();
+    final q = Queue<int>.from(partitions);
     while (q.isNotEmpty){
       final cur = q.removeFirst();
-      if (cur == total) return true;
-      for (final n in arr){
-        if(cur & n == 0){
-          q.add(cur | n);
-        }
+      if (cur == mask) return true;
+      for (final n in partitions){
+        if(cur & n == 0) q.add(cur | n);
       }
     }
     return false;
+  }
+
+  bool canPartitionSum(int number, int remains, List<int> nums){
+    for (int i = 0; i < nums.length; i++){
+      if ((1 << i) & number > 0) remains -= nums[i];
+      if (remains < 0) return false;
+    }
+    return remains == 0;
   }
 }
