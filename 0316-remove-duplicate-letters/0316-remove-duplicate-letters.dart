@@ -14,7 +14,6 @@ class Solution {
       if (hm[s[i]]! == i){
         while (q.isNotEmpty && q.first.compareTo(s[i]) <= 0){
           final cur = q.removeFirst();
-          if (done.contains(cur)) continue;
           res.add(cur);
           done.add(cur);
         }
