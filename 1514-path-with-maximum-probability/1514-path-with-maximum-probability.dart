@@ -1,7 +1,6 @@
 import 'dart:math';
 class Solution {
   double maxProbability(int n, List<List<int>> edges, List<double> succProb, int s, int e) {
-    // final w = succProb.map((s) => (s * 100).toInt()).toList();
     final probs = List.filled(n, .0);
     probs[s] = 1;
     final hm = <int, List<(int, double)>>{};
@@ -14,7 +13,6 @@ class Solution {
     }
     while(!q.isEmpty){
       final (cur, p) = q.remove();
-      // if (probs[cur] >= p) continue;
       final nexts = hm[cur] ?? [];
       for (final (next, np) in nexts){
         if (probs[next] >= p * np) continue;
@@ -22,7 +20,7 @@ class Solution {
         q.add((next, p * np));
       }
     }
-    print(probs);
+    // print(probs);
     return probs[e];
   }
 }
