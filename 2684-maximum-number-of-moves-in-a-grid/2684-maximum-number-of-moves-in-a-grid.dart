@@ -1,5 +1,7 @@
 class Solution {
   int maxMoves(List<List<int>> grid) {
+    // dp: can reach => true, cannot reach => false
+    // set every first column to true
     final dp = List.generate(grid.length, (i) => List.generate(grid[0].length,(j) => j == 0));
     for (int i = 0; i < grid[0].length -1; i++){
         for (int j = 0; j < grid.length; j++){
@@ -15,6 +17,7 @@ class Solution {
             }
         }
     }
+    // check how far can we reach
     for (int i = grid[0].length - 1; i >= 0; i--){
         for (int j = 0; j < grid.length; j++){
             if (dp[j][i]){
@@ -22,6 +25,7 @@ class Solution {
             }
         }
     }
+    // dummy code
     return 0;
   }
 }
