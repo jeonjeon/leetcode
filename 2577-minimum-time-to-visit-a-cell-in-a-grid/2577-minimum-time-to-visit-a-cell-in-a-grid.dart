@@ -2,22 +2,31 @@ class Solution {
   int minimumTime(List<List<int>> grid) {
     final dir = [(0, -1), (0, 1), (-1, 0), (1, 0)];
     final n = grid.length, m = grid[0].length;
-    final dp = List.generate(n, (_) => List.filled(m, 100001));
+    final dp = List.generate(n, (_) => List.filled(m, 10000000001));
     final pq = PriorityQueue<(int, int, int)>((a, b) => a.$3.compareTo(b.$3));
     pq.add((0,0,0));
     while (!pq.isEmpty){
         final (y, x, t) = pq.remove();
+        final canReach = dir.map((a) => (a.$1 + y, a.$2 + x))
+                            .where((a) => !(a.$1 < 0 || a.$1 >= n || a.$2 < 0 || a.$2 >= m))
+                            .where((a) => grid[a.$1][a.$2] <= t + 1)
+                            .length;
         for (final (dy, dx) in dir){
-            final ny = y + dy, nx = x + dx;
+            int ny = y + dy, nx = x + dx, nt = t + 1;
             if (ny < 0 || ny >= n || nx < 0 || nx >= m) continue;
-            if (grid[ny][nx] > t + 1) continue;
-            if (dp[ny][nx] <= t + 1) continue;
-            dp[ny][nx] = t + 1;
-            pq.add((ny, nx, t + 1));
+            if (nt < grid[ny][nx]){
+                if (canReach == 0) continue;
+                int diff = grid[ny][nx] - nt;
+                if (diff % 2 == 1) diff++;
+                nt += diff;
+            }
+            if (dp[ny][nx] <= nt) continue;
+            dp[ny][nx] = nt;
+            pq.add((ny, nx, nt));
         }
     }
     final res = dp.last.last;
-    if (res == 100001) return -1;
+    if (res == 10000000001) return -1;
     return res;
   }
 }
