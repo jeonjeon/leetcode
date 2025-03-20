@@ -1,54 +1,39 @@
 class Solution {
   List<int> minimumCost(int n, List<List<int>> edges, List<List<int>> query) {
-    int mask = 1;
-    while (mask < 100000){
-      mask <<= 1;
-      mask++;
-    }
-    final parent = List.generate(n, (i) => (i, -1));
     final res = <int>[];
-    for (final edg in edges){
-      union(parent, edg[0], edg[1], edg[2]);
-      // print(parent);
+    final m = (2 << 17) - 1;
+    final parent = List.generate(n, (i) => i);
+    final weight = List.filled(n, m);
+    for (final [a, b, w] in edges){
+      final p = union(a, b, parent, weight, w);
     }
-    // print(parent);
-    for (final q in query){
-      final (aP, aAnd) = find(parent, q[0], mask);
-      final (bP, bAnd) = find(parent, q[1], mask);
-      if (q[0] == q[1]) {
-        res.add(0);
-      } else if (aP == bP){
-        res.add(aAnd & bAnd);
-      } else {
-        res.add(-1);
+    for (final [s, t] in query){
+      final sp = findParent(parent, s);
+      final tp = findParent(parent, t);
+      if (sp == tp){
+        res.add(weight[sp]);
+        continue;
       }
+      res.add(-1);
     }
     return res;
   }
-  void union(List<(int, int)> parent, int a,  int b, int and){
-    final (aP, aAnd) = find(parent, a, and);
-    final (bP, bAnd) = find(parent, b, and);
-    and = aAnd & bAnd;
-    // print('a: $a, b: $b, aP: $aP, aAnd: $aAnd, bP: $bP, bAnd: $bAnd, and: $and');
-    if (aP < bP){
-      parent[aP] = (aP, and);
-      parent[bP] = (aP, and);
-      return;
+  int findParent(List<int> parent, int child,){
+    if (parent[child] != child){
+      parent[child] = findParent(parent, parent[child]);
     }
-    parent[aP] = (bP, and);
-    parent[bP] = (bP, and);
+    return parent[child];
   }
-  (int, int) find(List<(int, int)> parent, int x, int and){
-    var (nX, nAnd) = parent[x];
-    if (nAnd < 0){
-      parent[x] = (nX, and);
+  void union(int a, int b, List<int> parent, List<int> weight, int w){
+    a = findParent(parent, a);
+    b = findParent(parent, b);
+    w &= weight[a] & weight[b];
+    weight[a] = w;
+    weight[b] = w;
+    if (a < b){
+      parent[b] = a;
     } else {
-      parent[x] = (nX, and & nAnd);
+      parent[a] = b;
     }
-    nAnd = parent[x].$2;
-    if (nX != x){
-      parent[x] = find(parent, nX, nAnd);
-    }
-    return parent[x];
   }
 }
