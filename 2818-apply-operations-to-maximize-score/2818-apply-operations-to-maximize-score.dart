@@ -3,26 +3,31 @@ class Solution {
   final mod = 1000000007;
   int maximumScore(List<int> nums, int k) {
     int res = 1;
+    // 1. get prime number less than 100000
     final primes = getPrimes(nums);
-    final pf = nums.map((n) => getPrimeFactor(primes, n)).toList();
-    final leftSmaller = getLeftSmaller(pf);
-    final rightSmaller = getRightSmaller(pf);
-    final nnums = List.generate(pf.length, (i) => [nums[i], leftSmaller[i] * rightSmaller[i]])
+    // 2. count prime factors of each number in nums
+    final primeFactors = nums.map((n) => getPrimeFactor(primes, n)).toList();
+    // 3. find the longest left length less then each number
+    final leftSmaller = getLeftSmaller(primeFactors);
+    // 4. find the longest right length equal or less then each number
+    final rightSmaller = getRightSmaller(primeFactors);
+    // 5. zip nums[i] and leftSmaller[i] * rightSmaller[i]
+    // leftSmaller[i] * rightSmaller[i] is a maximum count of applying operations
+    final nnums = List.generate(primeFactors.length, (i) => [nums[i], leftSmaller[i] * rightSmaller[i]])
                 ..sort((a, b) => b[0].compareTo(a[0]));
-    // print(primes);
-    // print(pf);
-    // print(leftSmaller);
-    // print(rightSmaller);
-    // print(nnums);
-    for (final [n, mx] in nnums){
-        final cnt = min(mx, k);
-        k -= cnt;
-        res = (res * modPow(n, cnt)) % mod;
-        // print('res: $res, n: $n, cnt: $cnt, k: $k');
+
+    for (final [n, cnt] in nnums){
+        // maximum must in k
+        final maximum = min(cnt, k);
+        k -= maximum;
+        res = (res * modPow(n, maximum)) % mod;
         if (k == 0) break;
     }
+    // 6. done!
     return res;
   }
+
+  // effective power operation with modular
   int modPow(int n, int cnt) {
     if (cnt == 0) return 1;
     
@@ -34,6 +39,8 @@ class Solution {
     
     return res;
   }
+
+  // the number of left numberrs less than current number include current number
   List<int> getLeftSmaller(List<int> pf){
     final leftSmaller = List.filled(pf.length, 0);
     final stack = <(int, int)>[];
@@ -48,6 +55,7 @@ class Solution {
     }
     return leftSmaller;
   }
+  // the number of right numberrs equeal or greater than current number include current number
   List<int> getRightSmaller(List<int> pf){
     final rightSmaller = List.filled(pf.length, 0);
     final stack = <(int, int)>[];
@@ -62,6 +70,7 @@ class Solution {
     }
     return rightSmaller;
   }
+  // getting prime numbers
   List<int> getPrimes(List<int> nums){
     final che = List.filled(100001, true);
     final primes = <int>[];
@@ -74,6 +83,9 @@ class Solution {
     }
     return primes;
   }
+
+  // count prime factors of each number
+  // memo is a hashmap for memoization
   final memo = <int, int>{};
   int getPrimeFactor(List<int> primes, int n){
     if (memo.containsKey(n)) return memo[n]!;
