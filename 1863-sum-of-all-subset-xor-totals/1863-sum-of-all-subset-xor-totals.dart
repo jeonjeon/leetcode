@@ -5,6 +5,7 @@ class Solution {
     for (int mask = 0; mask < lim; mask++){
       int xor = 0;
       for (int i = 0; i < nums.length; i++){
+        if (mask < 1 << i) break;
         if (mask & (1 << i) > 0){
           xor ^= nums[i];
         }
