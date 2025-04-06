@@ -13,7 +13,8 @@ class Solution {
         }
       }
     }
-    final largest = idxs.reduce((a, b) => a.length > b.length ? a : b);
-    return largest.map((l) => nums[l]).toList();
+    return idxs.reduce((a, b) => a.length > b.length ? a : b)
+               .map((l) => nums[l])
+               .toList();
   }
 }
