@@ -1,24 +1,21 @@
-import 'dart:collection';
 class Solution {
   bool canPartition(List<int> nums) {
-    nums.sort();
     final sum = nums.reduce((a, b) => a + b);
     if (sum % 2 == 1) return false;
     final half = sum ~/ 2;
-    // print('sum: $sum, half: $half');
-    if (nums.last > half) return false;
-    final visit = SplayTreeSet<int>();
-    for (final n in nums){
-      if (n == half) return true;
-      final sums = <int>[n];
-      for (final s in visit){
-        if (n + s > half) break;
-        if (n + s == half) return true;
-        sums.add(n + s);
+    var dp = List.filled(half + 1, false);
+    dp[0] = true;
+    for (int i = 0; i < nums.length; i++){
+      final temp = List.filled(half + 1, false);
+      temp[0] = true;
+      for (int j = 0; j <= half; j++){
+        if (!dp[j]) continue;
+        temp[j] = true;
+        if (j + nums[i] > half) break;
+        temp[j + nums[i]] = true;
       }
-      visit.addAll(sums);
+      dp = temp;
     }
-    // print(visit);
-    return false;
+    return dp[half];
   }
 }
