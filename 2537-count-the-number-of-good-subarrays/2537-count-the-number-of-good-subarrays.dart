@@ -8,7 +8,6 @@ class Solution {
       while (l < nums.length && pairs >= k && pairs - hm[nums[l]]! + 1 >= k){
         pairs -= hm[nums[l]]! - 1;
         hm[nums[l]] = hm[nums[l]]! - 1;
-        if (hm[nums[l]] == 0) hm.remove(nums[l]);
         l++;
       }
       if (pairs >= k) res += l + 1;
