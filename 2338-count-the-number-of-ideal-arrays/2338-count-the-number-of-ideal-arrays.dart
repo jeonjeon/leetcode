@@ -13,7 +13,7 @@ class Solution {
         }
       }
     }
-    for (int i = 1; i < 10000; i++){
+    for (int i = 1; i <= 10000; i++){
       cnt[i][0]++;
       for (int j = 2 * i; j <= 10000; j += i){
         for (int k = 0; k < 14; k++){
@@ -29,7 +29,7 @@ class Solution {
         res = (cnt[i][j] * comb[n - 1][j] + res) % mod;
       }
     }
-    if (maxValue == 10000) res++;
+    // if (maxValue == 10000) res++;
     return res;
   }
 }
