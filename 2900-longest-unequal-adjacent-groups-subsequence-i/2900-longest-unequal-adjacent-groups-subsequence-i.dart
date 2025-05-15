@@ -1,15 +1,15 @@
 class Solution {
   List<String> getLongestSubsequence(List<String> words, List<int> groups) {
-    final a = subsIdx(groups, 0);
-    final b = subsIdx(groups, 1);
-    if (a.length > b.length) return a.map((i) => words[i]).toList();
-    return b.map((i) => words[i]).toList();
+    final a = subsIdx(groups, words, 0);
+    final b = subsIdx(groups, words, 1);
+    if (a.length > b.length) return a;
+    return b;
   }
-  List<int> subsIdx (List<int> groups, int cur) {
-    final res = <int>[];
+  List<String> subsIdx (List<int> groups, List<String> words, int cur) {
+    final res = <String>[];
     for (int i = 0; i < groups.length; i++){
         if (groups[i] == cur){
-            res.add(i);
+            res.add(words[i]);
             cur = (cur + 1) % 2;
         }
     }
