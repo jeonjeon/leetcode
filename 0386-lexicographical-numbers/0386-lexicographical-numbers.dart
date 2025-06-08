@@ -1,10 +1,19 @@
 class Solution {
+  final res = <int>[];
   List<int> lexicalOrder(int n) {
-    // Generate the list of numbers from 1 to n
-  List<int> numbers = [for (int i = 1; i <= n; i++) i];
-
-  // Sort the numbers lexicographically by converting them to strings
-  numbers.sort((a, b) => a.toString().compareTo(b.toString()));
-  return numbers;
+    dfs(n, 1);
+    return res;
+  }
+  void dfs(int n, int upper){
+    if (upper > n) return;
+    res.add(upper);
+    for (int i = 1; i < 10; i++){
+        if (upper * 10 <= n){
+            dfs(n, upper * 10);
+        }
+        upper++;
+        if (upper > n || upper % 10 == 0) return;
+        res.add(upper);
+    }
   }
 }
