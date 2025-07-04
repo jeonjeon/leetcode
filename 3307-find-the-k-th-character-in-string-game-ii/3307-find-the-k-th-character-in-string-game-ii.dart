@@ -4,10 +4,9 @@ class Solution {
     int res = 0;
     for (final o in op){
       if (k == 0) break;
-      if (k & 1 == 1 && o == 1) res++;
+      if (k & 1 == 1) res += o;
       k >>= 1;
-      res %= 26;
     }
-    return String.fromCharCode('a'.codeUnitAt(0) + res);
+    return String.fromCharCode('a'.codeUnitAt(0) + res % 26);
   }
 }
