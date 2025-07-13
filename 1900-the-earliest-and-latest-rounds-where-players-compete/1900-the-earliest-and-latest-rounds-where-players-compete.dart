@@ -1,8 +1,8 @@
 import 'dart:math' as math;
 
 class Solution {
-  int minR = double.maxFinite.toInt();
-  int maxR = double.minPositive.toInt();
+  int minR = 28;
+  int maxR = 1;
   
   void dfs(int mask, int round, int i, int j, int first, int second) {
     if (i >= j) {
