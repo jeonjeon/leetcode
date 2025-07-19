@@ -1,19 +1,26 @@
 class Solution {
   List<String> removeSubfolders(List<String> folder) {
-    final sett = folder.toSet();
-    final remove = <String>[];
-    for (final w in sett){
-        for (int i = 1; i < w.length; i++){
-            if (w[i] == '/'){
-                if (sett.contains(w.substring(0, i))){
-                    remove.add(w);
-                }
-            }
-        }
+    folder.sort();
+    final res = <String>[];
+    final trie = Trie();
+    for (final f in folder){
+      final fArr = f.split('/').skip(1).toList();
+      if (trie.add(fArr)) res.add(f);
     }
-    for (final r in remove){
-        sett.remove(r);
+    return res;
+  }
+}
+class Trie {
+  final children = <String, Trie>{};
+  bool done = false;
+
+  bool add(List<String> word){
+    var cur = this;
+    for (int i = 0; i < word.length; i++){
+      cur = (cur.children[word[i]] ??= Trie());
+      if (cur.done) return false;
     }
-    return sett.toList();
+    cur.done = true;
+    return true;
   }
 }
