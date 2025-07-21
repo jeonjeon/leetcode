@@ -1,19 +1,16 @@
-import 'dart:math';
 class Solution {
   String makeFancyString(String s) {
-    final sb = StringBuffer();
-    String cur = '';
-    int cnt = 0;
-    for (int i = 0; i < s.length; i++){
-        if (s[i] == cur){
-            if (cnt == 2) continue;
-            cnt++;
-        } else {
-            cur = s[i];
-            cnt = 1;
-        }
-        sb.write(cur);
+    final res = <String>[s[0]];
+    int cnt = 1;
+    for (int i = 1; i < s.length; i++){
+      if (s[i] == s[i - 1]){
+        cnt++;
+      } else {
+        cnt = 1;
+      }
+      if (cnt > 2) continue;
+      res.add(s[i]);
     }
-    return sb.toString();
+    return res.join('');
   }
 }
