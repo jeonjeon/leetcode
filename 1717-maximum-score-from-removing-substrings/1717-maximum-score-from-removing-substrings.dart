@@ -1,10 +1,32 @@
-import 'dart:math';
 class Solution {
   int maximumGain(String s, int x, int y) {
-    if (y > x){
-      int a = 0;
-      int b = 0;
+    // ab first
+    if (x > y){
       int res = 0;
+      int a = 0, b = 0;
+      for (int i = 0; i < s.length; i++){
+        if (s[i] == 'b'){
+          if (a > 0){
+            a--;
+            res += x;
+          } else {
+            b++;
+          }
+          continue;
+        }
+        if (s[i] == 'a'){
+          a++;
+          continue;
+        }
+        res += min(a, b) * y;
+        a = 0; 
+        b = 0;
+      }
+      res += min(a, b) * y;
+      return res;
+    }
+      int res = 0;
+      int a = 0, b = 0;
       for (int i = 0; i < s.length; i++){
         if (s[i] == 'a'){
           if (b > 0){
@@ -13,37 +35,17 @@ class Solution {
           } else {
             a++;
           }
-        } else if (s[i] == 'b'){
-          b++;
-        } else {
-          res += x * min(a, b);
-          a = 0;
-          b = 0;
+          continue;
         }
-      }
-      return res + (x * min(a, b));
-    }
-
-    // ab가 더 크거나 같을 때
-    int a = 0;
-    int b = 0;
-    int res = 0;
-    for (int i = 0; i < s.length; i++){
-      if (s[i] == 'b'){
-        if (a > 0){
-          a--;
-          res += x;
-        } else {
+        if (s[i] == 'b'){
           b++;
+          continue;
         }
-      } else if (s[i] == 'a'){
-        a++;
-      } else {
-        res += y * min(a, b);
-        a = 0;
+        res += min(a, b) * x;
+        a = 0; 
         b = 0;
       }
-    }
-    return res + (y * min(a, b));
+      res += min(a, b) * x;
+      return res;
   }
 }
