@@ -1,59 +1,40 @@
+import 'dart:math';
 class Solution {
   List<int> smallestSubarrays(List<int> nums) {
     final res = <int>[];
-    final arr = List.generate(nums.length + 1, (i) => List.filled(30, 0));
-    for (int i = 1; i < arr.length; i++){
-      int n = nums[i - 1];
-      for (int j = 0; j < 30; j++){
-        arr[i][j] = n & 1;
-        if (i > 0){
-          arr[i][j] += arr[i - 1][j];
+    final suffix = List.generate(nums.length + 1, (_) => List.filled(32, 0));
+    for (int i = nums.length - 1; i >= 0; i--){
+        final n = nums[i];
+        for (int j = 0; j < 32; j++){
+            suffix[i][j] = suffix[i + 1][j];
+            if (n & (1 << j) > 0) suffix[i][j]++;
         }
-        n >>= 1;
-      }
     }
-    //print('arr: $arr');
-    for (int i = 1; i < arr.length; i++){
-      int l = i;
-      int r = arr.length - 1;
-      final maxi = rangeSum(arr, i, r);
-      //print('i: $i, r: $r, maxi: $maxi');
-      while (l <= r){
-        final mid = (l + r) ~/ 2;
-        final midSum = rangeSum(arr, i, mid);
-        if (i == 3){
-          //print('l: $l, r: $r, midSum: $midSum');
+    for (int i = 0; i < suffix.length - 1; i++){
+        int l = i, r = suffix.length - 1;
+        final cur = suffix[i];
+        if (cur.every((c) => c == 0)){
+            res.add(1);
+            continue;
         }
-        if (isSame(maxi, midSum)){
-          r = mid - 1;
-        } else {
-          l = mid + 1;
+        while (l < r){
+            final m = (l + r) ~/ 2;
+            if (bs(cur, suffix[m])){
+                r = m;
+            } else {
+                l = m + 1;
+            }
         }
-      }
-      //print('i: $i, l: $l');
-      res.add(l - i + 1);
+        res.add(l - i);
     }
     return res;
   }
-
-  List<int> rangeSum (List<List<int>> arr, int s, int e){
-    final target = arr[e].toList();
-    final prev = arr[s - 1];
-    for (int j = 0; j < target.length; j++){
-      target[j] -= prev[j];
-    }
-    return target;
-  }
-
-  bool isSame(List<int> arr1,List<int> arr2){
-    for (int i = 0; i < arr1.length; i++){
-      if (arr1[i] > 0 && arr2[i] == 0){
-        return false;
-      }
-      if (arr2[i] > 0 && arr1[i] == 0){
-        return false;
-      }
+  bool bs(List<int> cur, List<int> diff){
+    for (int i = 0; i < 32; i++){
+        if (cur[i] == 0) continue;
+        if (cur[i] == diff[i]) return false;
     }
     return true;
   }
+
 }
