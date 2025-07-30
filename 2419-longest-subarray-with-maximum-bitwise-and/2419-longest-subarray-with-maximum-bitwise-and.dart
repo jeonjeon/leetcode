@@ -1,16 +1,16 @@
 import 'dart:math';
 class Solution {
   int longestSubarray(List<int> nums) {
-    int maxx = 0, cnt = 0, res = 0;
+    int res = 0, mx = 0, cnt = 0;
     for (final n in nums){
-      if (n > maxx){
-        res = 0;
-        cnt = 1;
-        maxx = n;
-      } else if (n < maxx){
+      if (mx == n) {
+        cnt++;
+      } else if (mx > n){
         cnt = 0;
       } else {
-        cnt++;
+        mx = n;
+        cnt = 1;
+        res = 1;
       }
       res = max(res, cnt);
     }
