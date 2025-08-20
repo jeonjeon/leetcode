@@ -1,12 +1,19 @@
-import 'dart:math';
 class Solution {
-  int countSquares(List<List<int>> matrix) {
-    for (int i = 1; i < matrix.length; i++){
-      for (int j = 1; j < matrix.first.length; j++){
-        if (matrix[i][j] == 0) continue;
-        matrix[i][j] += min(min(matrix[i - 1][j], matrix[i - 1][j - 1]), matrix[i][j - 1]);
+  int countSquares(List<List<int>> m) {
+    int res = 0;
+    for (int i = 0; i < m.length; i++){
+      for (int j = 0; j < m[0].length; j++){
+        if (m[i][j] == 0) continue;
+        if (i > 0 && j > 0){
+          int mn = min(300, m[i - 1][j]);
+          mn = min(mn, m[i][j - 1]);
+          mn = min(mn, m[i - 1][j - 1]);
+          m[i][j] += mn;
+        }
+        res += m[i][j];
       }
     }
-    return matrix.expand((a) => a).reduce((a,b) => a + b);
+    print(m);
+    return res;
   }
 }
