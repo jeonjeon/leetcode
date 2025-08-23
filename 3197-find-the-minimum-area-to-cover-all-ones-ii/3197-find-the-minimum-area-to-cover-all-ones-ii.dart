@@ -15,7 +15,7 @@ class Solution {
       final topWhole = getMinArea(vert, 0, i - 1, 0, horiLen - 1, horiLen);
       // 하단 전체
       final botWhole = getMinArea(vert, i, grid.length - 1, 0, horiLen - 1, horiLen);
-      // 나머지 쪼개기
+      // 나머지 가로로 쪼개기
       for (int j = 1; j < horiLen; j++){
         final botLeft = getMinArea(vert, i, grid.length - 1, 0, j - 1, horiLen);
         final botRight = getMinArea(vert, i, grid.length - 1, j, horiLen - 1, horiLen);
@@ -25,7 +25,22 @@ class Solution {
         res = min(res, topWhole + botLeft + botRight);
         res = min(res, botWhole + topLeft + topRight);
       }
-      // print('i: $i, res: $res');
+      // 하단 세로로 쪼개기
+      if (grid.length - i - 1 > 1){
+        for (int k = i + 1; k < grid.length; k++){
+          final mid = getMinArea(vert, i, k - 1, 0, horiLen - 1, horiLen);
+          final bot = getMinArea(vert, k, grid.length - 1, 0, horiLen - 1, horiLen);
+          res = min(res, topWhole + mid + bot);
+        }
+      }
+      // 상단 세로 쪼개기
+      if (i > 1){
+        for (int k = 1; k < i; k++){
+          final mid = getMinArea(vert, k, i - 1, 0, horiLen - 1, horiLen);
+          final top = getMinArea(vert, 0, k - 1, 0, horiLen - 1, horiLen);
+          res = min(res, botWhole + mid + top);
+        }
+      }
     }
     // 가로 나눔
     for (int j = 1; j < horiLen; j++){
@@ -41,6 +56,22 @@ class Solution {
         final rightBot = getMinArea(vert, i, grid.length - 1, j, horiLen - 1, horiLen);
         res = min(res, leftWhole + rightTop + rightBot);
         res = min(res, rightWhole + leftTop + leftBot);
+      }
+      // 오른쪽 가로 쪼개기
+      if (horiLen - j - 1 > 1){
+        for (int k = j + 1; k < horiLen; k++){
+          final mid = getMinArea(vert, 0, grid.length - 1, j, k - 1, horiLen);
+          final right = getMinArea(vert, 0, grid.length - 1, k, horiLen - 1, horiLen);
+          res = min(res, leftWhole + mid + right);
+        }
+      }
+      // 왼쪽 세로 쪼개기
+      if (j > 1){
+        for (int k = 1; k < j; k++){
+          final mid = getMinArea(vert, 0, grid.length - 1, k, j - 1, horiLen);
+          final left = getMinArea(vert, 0, grid.length - 1, 0, k - 1, horiLen);
+          res = min(res, rightWhole + mid + left);
+        }
       }
       // print('j: $j, leftWhole: $leftWhole, rightWhole: $rightWhole, res: $res');
     }
