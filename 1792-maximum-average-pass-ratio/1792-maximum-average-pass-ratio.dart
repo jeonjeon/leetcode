@@ -1,25 +1,21 @@
 class Solution {
-  double maxAverageRatio(List<List<int>> cl, int e) {
-    var rateSum = 0.0;
-    final pq = PriorityQueue<List<int>>((a, b) {
-        if ((a[0] + 1) / (a[1] + 1) - (a[0] / a[1]) > (b[0] + 1) / (b[1] + 1) - (b[0] / b[1])){
-            return -1;
-        }
-        return 1;
-    });
-    cl.forEach(pq.add);
-    for (int _ = 0; _ < e; _++){
-        final c = pq.remove();
-        c[0]++;
-        c[1]++;
-        pq.add(c);
+  double maxAverageRatio(List<List<int>> classes, int es) {
+    final pq = PriorityQueue<(double, int)>((a, b) => b.$1.compareTo(a.$1));
+    for (int i = 0; i < classes.length; i++){
+      final [p, t] = classes[i];
+      final margin = (p + 1) / (t + 1) - p / t;
+      pq.add((margin, i));
     }
-    while (pq.isNotEmpty){
-        final c = pq.remove();
-        // print(c);
-        rateSum += c[0] / c[1];
+    for (int _ = 0; _ < es; _++){
+      final (_, i) = pq.remove();
+      classes[i][0]++;
+      classes[i][1]++;
+      final [p, t] = classes[i];
+      final margin = (p + 1) / (t + 1) - p / t;
+      pq.add((margin, i));
     }
-    return rateSum / cl.length;
+    final averageSum = classes.map<double>((a) => a[0] / a[1]).reduce((a, b) => a + b);
+    return averageSum / classes.length;
   }
 }
 
@@ -27,6 +23,10 @@ class PriorityQueue<T> {
 	List<T> _elements = []; 
 	Comparator<T> _comparator; 
 	PriorityQueue(this._comparator); 
+	
+	bool get isNotEmpty => !_elements.isEmpty; 
+	bool get isEmpty => _elements.isEmpty; 
+	int get length => _elements.length; 
 	
 	void add(T element) { 
 		_elements.add(element); 
@@ -48,10 +48,6 @@ class PriorityQueue<T> {
 		if (isEmpty) throw StateError('empty'); 
 		return _elements.first; 
 	} 
-	bool get isNotEmpty => !_elements.isEmpty; 
-	bool get isEmpty => _elements.isEmpty; 
-	
-	int get length => _elements.length; 
 	
 	void _bubbleUp(int index) { 
 		while (index > 0) { 
