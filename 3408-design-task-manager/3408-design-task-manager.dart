@@ -1,44 +1,50 @@
 import 'dart:collection';
+
+int _compare(int a, int b) => b.compareTo(a);
+
 class TaskManager {
-  final tup = <int, List<int>>{};
-  final pt = SplayTreeMap<int, SplayTreeSet<int>>((a, b) => b.compareTo(a));
+  // taskId: [userId, priority]
+  final taskUserPriorityMap = <int, List<int>>{};
+  
+  // priority: {taskId set}
+  final priorityToTasksMap = SplayTreeMap<int, SplayTreeSet<int>>(_compare);
+  
   TaskManager(List<List<int>> tasks) {
-    for (final task in tasks){
-      final [u, t, p] = task;
-      tup[t] = [u, p];
-      (pt[p] ??= SplayTreeSet<int>((a, b) => b.compareTo(a))).add(t);
+    for (final task in tasks) {
+      final [userId, taskId, priority] = task;
+      taskUserPriorityMap[taskId] = [userId, priority];
+      (priorityToTasksMap[priority] ??= SplayTreeSet<int>(_compare)).add(taskId);
     }
   }
   
-  void add(int u, int t, int p) {
-    tup[t] = [u, p];
-    (pt[p] ??= SplayTreeSet<int>((a, b) => b.compareTo(a))).add(t);
+  void add(int userId, int taskId, int priority) {
+    taskUserPriorityMap[taskId] = [userId, priority];
+    (priorityToTasksMap[priority] ??= SplayTreeSet<int>(_compare)).add(taskId);
   }
   
-  void edit(int t, int np) {
-    final [u, p] = tup[t]!;
-    pt[p]!.remove(t);
-    if (pt[p]!.isEmpty) pt.remove(p);
-    (pt[np] ??= SplayTreeSet<int>((a, b) => b.compareTo(a))).add(t);
-    tup[t] = [u, np];
+  void edit(int taskId, int newPriority) {
+    final [userId, currentPriority] = taskUserPriorityMap[taskId]!;
+    rmv(taskId);
+    add(userId, taskId, newPriority);
   }
   
-  void rmv(int t) {
-    final [u, p] = tup[t]!;
-    pt[p]!.remove(t);
-    if (pt[p]!.isEmpty) pt.remove(p);
-    tup.remove(t);
+  void rmv(int taskId) {
+    final [userId, priority] = taskUserPriorityMap[taskId]!;
+    priorityToTasksMap[priority]!.remove(taskId);
+    if (priorityToTasksMap[priority]!.isEmpty) {
+      priorityToTasksMap.remove(priority);
+    }
+    taskUserPriorityMap.remove(taskId);
   }
   
   int execTop() {
-    final key = pt.firstKey();
-    if (key == null) return -1;
-    final t = pt[key]!.first;
-    final [u, p] = tup[t]!;
-    pt[p]!.remove(t);
-    if (pt[p]!.isEmpty) pt.remove(p);
-    tup.remove(t);
-    return u;
+    final highestPriority = priorityToTasksMap.firstKey();
+    if (highestPriority == null) return -1;
+    
+    final taskId = priorityToTasksMap[highestPriority]!.first;
+    final [userId, priority] = taskUserPriorityMap[taskId]!;
+    rmv(taskId);
+    return userId;
   }
 }
 /**
