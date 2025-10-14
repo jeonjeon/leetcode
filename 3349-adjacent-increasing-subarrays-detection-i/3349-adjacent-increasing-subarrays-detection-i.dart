@@ -1,14 +1,19 @@
 class Solution {
   bool hasIncreasingSubarrays(List<int> nums, int k) {
     if (k == 1) return true;
-    final prefix = List.filled(nums.length, 1);
+    int cnt = 1;
+    final arr = List.filled(nums.length, false);
     for (int i = 1; i < nums.length; i++){
-        if (nums[i] > nums[i - 1]){
-            prefix[i] += prefix[i - 1];
+        if (nums[i] <= nums[i - 1]){
+            cnt = 1;
+            continue;
         }
-    }
-    for (int i = k - 1; i < nums.length - k; i++){
-        if (prefix[i] >= k && prefix[i + k] >= k) return true;
+        cnt++;
+        if (cnt < k) continue;
+        arr[i] = true;
+        if (i < k) continue;
+        // print('i: $i, arr: $arr, cnt: $cnt');
+        if (arr[i - k] == true) return true;
     }
     return false;
   }
