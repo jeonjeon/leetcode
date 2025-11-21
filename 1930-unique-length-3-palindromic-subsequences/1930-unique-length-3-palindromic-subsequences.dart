@@ -1,26 +1,31 @@
 class Solution {
   int countPalindromicSubsequence(String s) {
     final a = 'a'.codeUnitAt(0);
-    final arr = List.generate(26, (_) => <int>[]);
-    final prefix = List.generate(s.length, (_) => List.filled(26, 0));
+    final first = List.filled(26, -1);
+    final arr = List.generate(s.length + 1, (_) => List.filled(26, 0));
     for (int i = 0; i < s.length; i++){
-        final code = s.codeUnitAt(i) - a;
-        if (i > 0){
-            for (int j = 0; j < 26; j++){
-                prefix[i][j] = prefix[i - 1][j];
-            }
-        }
-        prefix[i][code]++;
-        arr[code].add(i);
+      final cur = s.codeUnitAt(i) - a;
+      for (int j = 0; j < 26; j++){
+        arr[i + 1][j] = arr[i][j];
+      }
+      arr[i + 1][cur]++;
+      if (first[cur] == -1){
+        first[cur] = i;
+      }
     }
+    final visit = <int>{};
     int res = 0;
-    for (int i = 0; i < 26; i++){
-        if (arr[i].isEmpty || arr[i].last - arr[i].first <= 1) continue;
-        final last = prefix[arr[i].last - 1];
-        final first = prefix[arr[i].first];
-        for (int i = 0; i < 26; i++){
-            if (last[i] > first[i]) res++;
+    for (int i = s.length - 1; i >= 0; i--){
+      final cur = s.codeUnitAt(i) - a;
+      if (visit.contains(cur)) continue;
+      visit.add(cur);
+      final f = first[cur];
+      if (i - f < 2) continue;
+      for (int j = 0; j < 26; j++){
+        if (arr[i][j] - arr[f + 1][j] > 0){
+          res++;
         }
+      }
     }
     return res;
   }
