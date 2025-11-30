@@ -1,25 +1,27 @@
-import 'dart:math';
 class Solution {
   int minSubarray(List<int> nums, int p) {
-    int l = 1, r = nums.length, res = nums.length;
-    nums[0] %= p;
-    for (int i = 1; i < nums.length; i++){
-      nums[i] = (nums[i] + nums[i - 1]) % p;
+    final pre = <int>[0];
+    nums.forEach((n) => pre.add((pre.last + n) % p));
+    if (pre.last == 0) return 0;
+    int l = 0, r = nums.length;
+    while (l < r){
+      final m = (l + r) ~/ 2;
+      if (bs(pre, m, p)){
+        r = m;
+      } else {
+        l = m + 1;
+      }
     }
-    final total = nums.last;
-    final hm = <int, int>{0: -1};
-    // print(nums);
-    for (int i = 0; i < nums.length; i++){
-      final n = nums[i];
-      var x = n - total;
-      if (x < 0) x += p;
-      if (n == x) return 0;
-      final prev = hm[x] ?? -100001;
-      // print('n: $n, x: $x, prev: $prev');
-      res = min(res, i - prev);
-      hm[n] = i;
+    if (l == nums.length) return -1;
+    return l;
+  }
+  bool bs(List<int> pre, int m, int p){
+    final target = pre.last;
+    for (int i = m; i < pre.length; i++){
+      var cur = pre[i] - pre[i - m];
+      if (cur < 0) cur += p;
+      if (cur == target) return true;
     }
-    if (res == nums.length) return -1;
-    return res;
+    return false;
   }
 }
