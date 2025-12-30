@@ -1,38 +1,34 @@
 class Solution {
   int numMagicSquaresInside(List<List<int>> grid) {
     int res = 0;
-    for (int y = 0; y < grid.length - 2; y++){
-      for (int x = 0; x < grid.length - 2; x++){
-        if (isMagic(grid, y, x)){
-          res++;
-        }
+    for (int i = 0; i <= grid.length - 3; i++){
+      for (int j = 0; j <= grid[0].length - 3; j++){
+        if (magic(grid,j,i)) res++;
       }
     }
     return res;
   }
-  bool isMagic(List<List<int>> grid, int y, int x){
-    // check col sum & row sum & distinct
-    final distinct = List.generate(9, (i) => i + 1).toSet();
+  bool magic(List<List<int>> grid, int x, int y){
+    final distinct = <int>{};
+    final vert = List.filled(3, 0);
+    final hori = List.filled(3, 0);
+    int lr = 0, rl = 0;
     for (int i = 0; i < 3; i++){
-      int col = 0;
-      int row = 0;
       for (int j = 0; j < 3; j++){
-        if (!distinct.contains(grid[y + i][x + j])) return false;
-        distinct.remove(grid[y + i][x + j]);
-        col += grid[y + i][x + j];
-        row += grid[y + j][x + i];
+        final cur = grid[y + i][x + j];
+        distinct.add(cur);
+        if (cur > 9 || cur < 1) return false;
+        hori[i] += cur;
+        vert[j] += cur;
+        if (i == j) lr += cur;
+        if (i == 0 && j == 2) rl += cur;
+        if (i == 1 && j == 1) rl += cur;
+        if (i == 2 && j == 0) rl += cur;
       }
-      if (col != 15 || row != 15) return false;
     }
-    if (distinct.isNotEmpty) return false;
-    // 대각선
-    int diaL = 0;
-    int diaR = 0;
-    for (int i = 0; i < 3; i++){
-      diaL += grid[y + i][x + i];
-      diaR += grid[y + i][x + 2 - i];
-    }
-    if (diaL != 15 || diaR != 15) return false;
-    return true;
+    final sett = {...vert, ...hori, lr, rl};
+    // print('vert: $vert, hori: $hori, lr: $lr, rl: $rl');
+    // print('x: $x, y: $y, sett: $sett');
+    return sett.length == 1 && distinct.length == 9;
   }
 }
