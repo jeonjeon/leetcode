@@ -1,14 +1,19 @@
-import 'dart:math';
 class Solution {
   int numSteps(String s) {
-    final sArr = s.split('').map((c) => int.parse(c)).toList().reversed.toList();
-    int plus = 0;
-    int res = 0;
-    for (int i = 0; i < sArr.length - 1; i++){
-      final cur = sArr[i] + plus;
-      res += (cur % 2) + 1;
-      plus = min(cur, 1);
+    int rem = 0, res = 0;
+    for (int i = s.length - 1; i >= 0; i--){
+      final cur = int.parse(s[i]) + rem;
+      if (i == 0 && cur == 1) break;
+      res++;
+      if (cur == 0){
+        rem = 0;
+        continue;
+      }
+      if (cur == 1) {
+        res++;
+      }
+      rem = 1;
     }
-    return res + plus;
+    return res;
   }
 }
