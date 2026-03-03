@@ -1,21 +1,22 @@
 class Solution {
   String findKthBit(int n, int k) {
-    final l = log(k) ~/ log(2) + 1;
-    int total = (1 << l) - 1;
-    int xor = 0;
-    while (total > 1){
-      final half = (total / 2).ceil();
-      // print('half: $half, k: $k, total: $total');
-      if (k == half){
-        return '${xor ^ 1}';
-      } 
-      if (k > half){
-        k = total - k + 1;
-        xor ^= 1;
-      }
-      total = half - 1;
-      // print('half: $half, k: $k, total: $total');
+    int res = 0, digit = 1;
+    while (digit < k) {
+      digit <<= 1;
+      digit++;
     }
-    return '$xor';
+    // print('k: $k, digit: $digit');
+    while (digit > 1){
+      final half = digit ~/ 2;
+      if (k == half + 1) return '${1 ^ res}';
+      if (k > digit ~/ 2) {
+        k = digit - k + 1;
+        res ^= 1;
+      }
+      digit--;
+      digit >>= 1;
+      // print('k: $k, digit: $digit, res: $res');
+    }
+    return '$res';
   }
 }
