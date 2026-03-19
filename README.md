@@ -26,11 +26,13 @@ chrome leethub 테스트 겸 깃헙 잔디 작업 겸
 | ------- | ------- |
 | [1582-special-positions-in-a-binary-matrix](https://github.com/jeonjeon/leetcode/tree/main/1582-special-positions-in-a-binary-matrix/) | Easy |
 | [1980-find-unique-binary-string](https://github.com/jeonjeon/leetcode/tree/main/1980-find-unique-binary-string/) | Medium |
+| [3212-count-submatrices-with-equal-frequency-of-x-and-y](https://github.com/jeonjeon/leetcode/tree/main/3212-count-submatrices-with-equal-frequency-of-x-and-y/) | Medium |
 | [3296-minimum-number-of-seconds-to-make-mountain-height-zero](https://github.com/jeonjeon/leetcode/tree/main/3296-minimum-number-of-seconds-to-make-mountain-height-zero/) | Medium |
 ## Matrix
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [1582-special-positions-in-a-binary-matrix](https://github.com/jeonjeon/leetcode/tree/main/1582-special-positions-in-a-binary-matrix/) | Easy |
+| [3212-count-submatrices-with-equal-frequency-of-x-and-y](https://github.com/jeonjeon/leetcode/tree/main/3212-count-submatrices-with-equal-frequency-of-x-and-y/) | Medium |
 ## Dynamic Programming
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -53,6 +55,7 @@ chrome leethub 테스트 겸 깃헙 잔디 작업 겸
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [3130-find-all-possible-stable-binary-arrays-ii](https://github.com/jeonjeon/leetcode/tree/main/3130-find-all-possible-stable-binary-arrays-ii/) | Hard |
+| [3212-count-submatrices-with-equal-frequency-of-x-and-y](https://github.com/jeonjeon/leetcode/tree/main/3212-count-submatrices-with-equal-frequency-of-x-and-y/) | Medium |
 ## Bit Manipulation
 | Problem Name | Difficulty |
 | ------- | ------- |
