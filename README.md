@@ -32,6 +32,7 @@ chrome leethub 테스트 겸 깃헙 잔디 작업 겸
 | [2946-matrix-similarity-after-cyclic-shifts](https://github.com/jeonjeon/leetcode/tree/main/2946-matrix-similarity-after-cyclic-shifts/) | Easy |
 | [3212-count-submatrices-with-equal-frequency-of-x-and-y](https://github.com/jeonjeon/leetcode/tree/main/3212-count-submatrices-with-equal-frequency-of-x-and-y/) | Medium |
 | [3296-minimum-number-of-seconds-to-make-mountain-height-zero](https://github.com/jeonjeon/leetcode/tree/main/3296-minimum-number-of-seconds-to-make-mountain-height-zero/) | Medium |
+| [3418-maximum-amount-of-money-robot-can-earn](https://github.com/jeonjeon/leetcode/tree/main/3418-maximum-amount-of-money-robot-can-earn/) | Medium |
 | [3567-minimum-absolute-difference-in-sliding-submatrix](https://github.com/jeonjeon/leetcode/tree/main/3567-minimum-absolute-difference-in-sliding-submatrix/) | Medium |
 | [3643-flip-square-submatrix-vertically](https://github.com/jeonjeon/leetcode/tree/main/3643-flip-square-submatrix-vertically/) | Easy |
 ## Matrix
@@ -40,6 +41,7 @@ chrome leethub 테스트 겸 깃헙 잔디 작업 겸
 | [1582-special-positions-in-a-binary-matrix](https://github.com/jeonjeon/leetcode/tree/main/1582-special-positions-in-a-binary-matrix/) | Easy |
 | [2946-matrix-similarity-after-cyclic-shifts](https://github.com/jeonjeon/leetcode/tree/main/2946-matrix-similarity-after-cyclic-shifts/) | Easy |
 | [3212-count-submatrices-with-equal-frequency-of-x-and-y](https://github.com/jeonjeon/leetcode/tree/main/3212-count-submatrices-with-equal-frequency-of-x-and-y/) | Medium |
+| [3418-maximum-amount-of-money-robot-can-earn](https://github.com/jeonjeon/leetcode/tree/main/3418-maximum-amount-of-money-robot-can-earn/) | Medium |
 | [3567-minimum-absolute-difference-in-sliding-submatrix](https://github.com/jeonjeon/leetcode/tree/main/3567-minimum-absolute-difference-in-sliding-submatrix/) | Medium |
 | [3643-flip-square-submatrix-vertically](https://github.com/jeonjeon/leetcode/tree/main/3643-flip-square-submatrix-vertically/) | Easy |
 ## Dynamic Programming
@@ -47,6 +49,7 @@ chrome leethub 테스트 겸 깃헙 잔디 작업 겸
 | ------- | ------- |
 | [1888-minimum-number-of-flips-to-make-the-binary-string-alternating](https://github.com/jeonjeon/leetcode/tree/main/1888-minimum-number-of-flips-to-make-the-binary-string-alternating/) | Medium |
 | [3130-find-all-possible-stable-binary-arrays-ii](https://github.com/jeonjeon/leetcode/tree/main/3130-find-all-possible-stable-binary-arrays-ii/) | Hard |
+| [3418-maximum-amount-of-money-robot-can-earn](https://github.com/jeonjeon/leetcode/tree/main/3418-maximum-amount-of-money-robot-can-earn/) | Medium |
 ## Sliding Window
 | Problem Name | Difficulty |
 | ------- | ------- |
