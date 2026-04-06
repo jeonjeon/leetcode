@@ -1,50 +1,48 @@
 import 'dart:math';
-const north = (0, 1);
-const east = (1, 0);
-const south = (0, -1);
-const west = (-1, 0);
+import 'dart:collection';
 class Solution {
   int robotSim(List<int> commands, List<List<int>> obstacles) {
-    final obs = <int, Set<int>>{};
-    var curDir = north;
-    var x = 0, y = 0;
-    var res = 0;
-    for (final o in obstacles){
-      (obs[o[0]] ??= {}).add(o[1]);
+    final hori = <int, SplayTreeMap<int, int>>{};
+    final vert = <int, SplayTreeMap<int, int>>{};
+    for (final [x, y] in obstacles){
+      (vert[x] ??= SplayTreeMap())[y] = 0;
+      (hori[y] ??= SplayTreeMap())[x] = 0;
     }
-    for (final c in commands){
-      curDir = switch(c){
-        -2 => turnLeft(curDir),
-        -1 => turnRight(curDir),
-        _ => curDir,
-      };
-      if (c < 0) continue;
-      for (int i = 0; i < c; i++){
-        final (dx, dy) = curDir;
-        if (obs.containsKey(x + dx) && obs[x + dx]!.contains(y + dy)) break;
-        x += dx;
-        y += dy;
-        res = max(res, x * x + y * y);
+    int res = 0, dir = 0, x = 0, y = 0;
+    for (final com in commands){
+      // 방향전환
+      if (com < 0){
+        dir += switch (com){
+          -2 => -1,
+          _ => 1,
+        };
+        dir = (dir + 4) % 4;
+        continue;
       }
+      // 이동
+      // 하
+      if (dir == 2){
+        final obs = vert[x]?.lastKeyBefore(y) ?? y - com - 1;
+        y = max(y - com, obs + 1);
+      }
+      // 상
+      else if (dir == 0){
+        final obs = vert[x]?.firstKeyAfter(y) ?? y + com + 1;
+        y = min(y + com, obs - 1);
+      }
+      // 좌
+      else if (dir == 3){
+        final obs = hori[y]?.lastKeyBefore(x) ?? x - com - 1;
+        x = max(x - com, obs + 1);
+      }
+      // 우
+      else if (dir == 1){
+        final obs = hori[y]?.firstKeyAfter(x) ?? x + com + 1;
+        x = min(x + com, obs - 1);
+      }
+      res = max(res, x * x + y * y);
+      // print('dir: $dir, com: $com, x: $x, y: $y, res: $res');
     }
     return res;
-  }
-  (int, int) turnLeft((int, int) current){
-    return switch (current){
-      north => west,
-      west => south,
-      south => east,
-      east => north,
-      _ => (0, 0),
-    };
-  }
-  (int, int) turnRight((int, int) current){
-    return switch (current){
-      north => east,
-      east => south,
-      south => west,
-      west => north,
-      _ => (0, 0),
-    };
   }
 }
