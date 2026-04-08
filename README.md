@@ -29,6 +29,7 @@ chrome leethub 테스트 겸 깃헙 잔디 작업 겸
 | [1545-find-kth-bit-in-nth-binary-string](https://github.com/jeonjeon/leetcode/tree/main/1545-find-kth-bit-in-nth-binary-string/) | Medium |
 | [2075-decode-the-slanted-ciphertext](https://github.com/jeonjeon/leetcode/tree/main/2075-decode-the-slanted-ciphertext/) | Medium |
 | [2946-matrix-similarity-after-cyclic-shifts](https://github.com/jeonjeon/leetcode/tree/main/2946-matrix-similarity-after-cyclic-shifts/) | Easy |
+| [3653-xor-after-range-multiplication-queries-i](https://github.com/jeonjeon/leetcode/tree/main/3653-xor-after-range-multiplication-queries-i/) | Medium |
 ## Array
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -41,6 +42,7 @@ chrome leethub 테스트 겸 깃헙 잔디 작업 겸
 | [3418-maximum-amount-of-money-robot-can-earn](https://github.com/jeonjeon/leetcode/tree/main/3418-maximum-amount-of-money-robot-can-earn/) | Medium |
 | [3567-minimum-absolute-difference-in-sliding-submatrix](https://github.com/jeonjeon/leetcode/tree/main/3567-minimum-absolute-difference-in-sliding-submatrix/) | Medium |
 | [3643-flip-square-submatrix-vertically](https://github.com/jeonjeon/leetcode/tree/main/3643-flip-square-submatrix-vertically/) | Easy |
+| [3653-xor-after-range-multiplication-queries-i](https://github.com/jeonjeon/leetcode/tree/main/3653-xor-after-range-multiplication-queries-i/) | Medium |
 ## Matrix
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -115,4 +117,8 @@ chrome leethub 테스트 겸 깃헙 잔디 작업 겸
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [3643-flip-square-submatrix-vertically](https://github.com/jeonjeon/leetcode/tree/main/3643-flip-square-submatrix-vertically/) | Easy |
+## Divide and Conquer
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [3653-xor-after-range-multiplication-queries-i](https://github.com/jeonjeon/leetcode/tree/main/3653-xor-after-range-multiplication-queries-i/) | Medium |
 <!---LeetCode Topics End-->
