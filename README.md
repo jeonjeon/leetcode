@@ -44,6 +44,7 @@ chrome leethub 테스트 겸 깃헙 잔디 작업 겸
 | [3643-flip-square-submatrix-vertically](https://github.com/jeonjeon/leetcode/tree/main/3643-flip-square-submatrix-vertically/) | Easy |
 | [3653-xor-after-range-multiplication-queries-i](https://github.com/jeonjeon/leetcode/tree/main/3653-xor-after-range-multiplication-queries-i/) | Medium |
 | [3655-xor-after-range-multiplication-queries-ii](https://github.com/jeonjeon/leetcode/tree/main/3655-xor-after-range-multiplication-queries-ii/) | Hard |
+| [3740-minimum-distance-between-three-equal-elements-i](https://github.com/jeonjeon/leetcode/tree/main/3740-minimum-distance-between-three-equal-elements-i/) | Easy |
 ## Matrix
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -69,6 +70,7 @@ chrome leethub 테스트 겸 깃헙 잔디 작업 겸
 | [0874-walking-robot-simulation](https://github.com/jeonjeon/leetcode/tree/main/0874-walking-robot-simulation/) | Medium |
 | [1980-find-unique-binary-string](https://github.com/jeonjeon/leetcode/tree/main/1980-find-unique-binary-string/) | Medium |
 | [2840-check-if-strings-can-be-made-equal-with-operations-ii](https://github.com/jeonjeon/leetcode/tree/main/2840-check-if-strings-can-be-made-equal-with-operations-ii/) | Medium |
+| [3740-minimum-distance-between-three-equal-elements-i](https://github.com/jeonjeon/leetcode/tree/main/3740-minimum-distance-between-three-equal-elements-i/) | Easy |
 ## Backtracking
 | Problem Name | Difficulty |
 | ------- | ------- |
