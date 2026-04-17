@@ -50,6 +50,7 @@ chrome leethub 테스트 겸 깃헙 잔디 작업 겸
 | [3655-xor-after-range-multiplication-queries-ii](https://github.com/jeonjeon/leetcode/tree/main/3655-xor-after-range-multiplication-queries-ii/) | Hard |
 | [3740-minimum-distance-between-three-equal-elements-i](https://github.com/jeonjeon/leetcode/tree/main/3740-minimum-distance-between-three-equal-elements-i/) | Easy |
 | [3741-minimum-distance-between-three-equal-elements-ii](https://github.com/jeonjeon/leetcode/tree/main/3741-minimum-distance-between-three-equal-elements-ii/) | Medium |
+| [3761-minimum-absolute-distance-between-mirror-pairs](https://github.com/jeonjeon/leetcode/tree/main/3761-minimum-absolute-distance-between-mirror-pairs/) | Medium |
 ## Matrix
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -79,6 +80,7 @@ chrome leethub 테스트 겸 깃헙 잔디 작업 겸
 | [3488-closest-equal-element-queries](https://github.com/jeonjeon/leetcode/tree/main/3488-closest-equal-element-queries/) | Medium |
 | [3740-minimum-distance-between-three-equal-elements-i](https://github.com/jeonjeon/leetcode/tree/main/3740-minimum-distance-between-three-equal-elements-i/) | Easy |
 | [3741-minimum-distance-between-three-equal-elements-ii](https://github.com/jeonjeon/leetcode/tree/main/3741-minimum-distance-between-three-equal-elements-ii/) | Medium |
+| [3761-minimum-absolute-distance-between-mirror-pairs](https://github.com/jeonjeon/leetcode/tree/main/3761-minimum-absolute-distance-between-mirror-pairs/) | Medium |
 ## Backtracking
 | Problem Name | Difficulty |
 | ------- | ------- |
@@ -99,6 +101,7 @@ chrome leethub 테스트 겸 깃헙 잔디 작업 겸
 | [1622-fancy-sequence](https://github.com/jeonjeon/leetcode/tree/main/1622-fancy-sequence/) | Hard |
 | [2946-matrix-similarity-after-cyclic-shifts](https://github.com/jeonjeon/leetcode/tree/main/2946-matrix-similarity-after-cyclic-shifts/) | Easy |
 | [3296-minimum-number-of-seconds-to-make-mountain-height-zero](https://github.com/jeonjeon/leetcode/tree/main/3296-minimum-number-of-seconds-to-make-mountain-height-zero/) | Medium |
+| [3761-minimum-absolute-distance-between-mirror-pairs](https://github.com/jeonjeon/leetcode/tree/main/3761-minimum-absolute-distance-between-mirror-pairs/) | Medium |
 ## Binary Search
 | Problem Name | Difficulty |
 | ------- | ------- |
