@@ -36,6 +36,7 @@ chrome leethub 테스트 겸 깃헙 잔디 작업 겸
 | ------- | ------- |
 | [0874-walking-robot-simulation](https://github.com/jeonjeon/leetcode/tree/main/0874-walking-robot-simulation/) | Medium |
 | [1582-special-positions-in-a-binary-matrix](https://github.com/jeonjeon/leetcode/tree/main/1582-special-positions-in-a-binary-matrix/) | Easy |
+| [1855-maximum-distance-between-a-pair-of-values](https://github.com/jeonjeon/leetcode/tree/main/1855-maximum-distance-between-a-pair-of-values/) | Medium |
 | [1980-find-unique-binary-string](https://github.com/jeonjeon/leetcode/tree/main/1980-find-unique-binary-string/) | Medium |
 | [2463-minimum-total-distance-traveled](https://github.com/jeonjeon/leetcode/tree/main/2463-minimum-total-distance-traveled/) | Hard |
 | [2515-shortest-distance-to-target-string-in-a-circular-array](https://github.com/jeonjeon/leetcode/tree/main/2515-shortest-distance-to-target-string-in-a-circular-array/) | Easy |
@@ -105,6 +106,7 @@ chrome leethub 테스트 겸 깃헙 잔디 작업 겸
 ## Binary Search
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [1855-maximum-distance-between-a-pair-of-values](https://github.com/jeonjeon/leetcode/tree/main/1855-maximum-distance-between-a-pair-of-values/) | Medium |
 | [3296-minimum-number-of-seconds-to-make-mountain-height-zero](https://github.com/jeonjeon/leetcode/tree/main/3296-minimum-number-of-seconds-to-make-mountain-height-zero/) | Medium |
 | [3488-closest-equal-element-queries](https://github.com/jeonjeon/leetcode/tree/main/3488-closest-equal-element-queries/) | Medium |
 ## Greedy
@@ -132,6 +134,7 @@ chrome leethub 테스트 겸 깃헙 잔디 작업 겸
 ## Two Pointers
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [1855-maximum-distance-between-a-pair-of-values](https://github.com/jeonjeon/leetcode/tree/main/1855-maximum-distance-between-a-pair-of-values/) | Medium |
 | [3643-flip-square-submatrix-vertically](https://github.com/jeonjeon/leetcode/tree/main/3643-flip-square-submatrix-vertically/) | Easy |
 ## Divide and Conquer
 | Problem Name | Difficulty |
