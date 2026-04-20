@@ -38,6 +38,7 @@ chrome leethub 테스트 겸 깃헙 잔디 작업 겸
 | [1582-special-positions-in-a-binary-matrix](https://github.com/jeonjeon/leetcode/tree/main/1582-special-positions-in-a-binary-matrix/) | Easy |
 | [1855-maximum-distance-between-a-pair-of-values](https://github.com/jeonjeon/leetcode/tree/main/1855-maximum-distance-between-a-pair-of-values/) | Medium |
 | [1980-find-unique-binary-string](https://github.com/jeonjeon/leetcode/tree/main/1980-find-unique-binary-string/) | Medium |
+| [2078-two-furthest-houses-with-different-colors](https://github.com/jeonjeon/leetcode/tree/main/2078-two-furthest-houses-with-different-colors/) | Easy |
 | [2463-minimum-total-distance-traveled](https://github.com/jeonjeon/leetcode/tree/main/2463-minimum-total-distance-traveled/) | Hard |
 | [2515-shortest-distance-to-target-string-in-a-circular-array](https://github.com/jeonjeon/leetcode/tree/main/2515-shortest-distance-to-target-string-in-a-circular-array/) | Easy |
 | [2946-matrix-similarity-after-cyclic-shifts](https://github.com/jeonjeon/leetcode/tree/main/2946-matrix-similarity-after-cyclic-shifts/) | Easy |
@@ -112,6 +113,7 @@ chrome leethub 테스트 겸 깃헙 잔디 작업 겸
 ## Greedy
 | Problem Name | Difficulty |
 | ------- | ------- |
+| [2078-two-furthest-houses-with-different-colors](https://github.com/jeonjeon/leetcode/tree/main/2078-two-furthest-houses-with-different-colors/) | Easy |
 | [3296-minimum-number-of-seconds-to-make-mountain-height-zero](https://github.com/jeonjeon/leetcode/tree/main/3296-minimum-number-of-seconds-to-make-mountain-height-zero/) | Medium |
 ## Heap (Priority Queue)
 | Problem Name | Difficulty |
