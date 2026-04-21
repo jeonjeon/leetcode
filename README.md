@@ -36,6 +36,7 @@ chrome leethub 테스트 겸 깃헙 잔디 작업 겸
 | ------- | ------- |
 | [0874-walking-robot-simulation](https://github.com/jeonjeon/leetcode/tree/main/0874-walking-robot-simulation/) | Medium |
 | [1582-special-positions-in-a-binary-matrix](https://github.com/jeonjeon/leetcode/tree/main/1582-special-positions-in-a-binary-matrix/) | Easy |
+| [1722-minimize-hamming-distance-after-swap-operations](https://github.com/jeonjeon/leetcode/tree/main/1722-minimize-hamming-distance-after-swap-operations/) | Medium |
 | [1855-maximum-distance-between-a-pair-of-values](https://github.com/jeonjeon/leetcode/tree/main/1855-maximum-distance-between-a-pair-of-values/) | Medium |
 | [1980-find-unique-binary-string](https://github.com/jeonjeon/leetcode/tree/main/1980-find-unique-binary-string/) | Medium |
 | [2078-two-furthest-houses-with-different-colors](https://github.com/jeonjeon/leetcode/tree/main/2078-two-furthest-houses-with-different-colors/) | Easy |
@@ -143,4 +144,12 @@ chrome leethub 테스트 겸 깃헙 잔디 작업 겸
 | ------- | ------- |
 | [3653-xor-after-range-multiplication-queries-i](https://github.com/jeonjeon/leetcode/tree/main/3653-xor-after-range-multiplication-queries-i/) | Medium |
 | [3655-xor-after-range-multiplication-queries-ii](https://github.com/jeonjeon/leetcode/tree/main/3655-xor-after-range-multiplication-queries-ii/) | Hard |
+## Depth-First Search
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [1722-minimize-hamming-distance-after-swap-operations](https://github.com/jeonjeon/leetcode/tree/main/1722-minimize-hamming-distance-after-swap-operations/) | Medium |
+## Union-Find
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [1722-minimize-hamming-distance-after-swap-operations](https://github.com/jeonjeon/leetcode/tree/main/1722-minimize-hamming-distance-after-swap-operations/) | Medium |
 <!---LeetCode Topics End-->
