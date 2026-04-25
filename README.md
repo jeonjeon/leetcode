@@ -49,6 +49,7 @@ chrome leethub 테스트 겸 깃헙 잔디 작업 겸
 | [3212-count-submatrices-with-equal-frequency-of-x-and-y](https://github.com/jeonjeon/leetcode/tree/main/3212-count-submatrices-with-equal-frequency-of-x-and-y/) | Medium |
 | [3296-minimum-number-of-seconds-to-make-mountain-height-zero](https://github.com/jeonjeon/leetcode/tree/main/3296-minimum-number-of-seconds-to-make-mountain-height-zero/) | Medium |
 | [3418-maximum-amount-of-money-robot-can-earn](https://github.com/jeonjeon/leetcode/tree/main/3418-maximum-amount-of-money-robot-can-earn/) | Medium |
+| [3464-maximize-the-distance-between-points-on-a-square](https://github.com/jeonjeon/leetcode/tree/main/3464-maximize-the-distance-between-points-on-a-square/) | Hard |
 | [3488-closest-equal-element-queries](https://github.com/jeonjeon/leetcode/tree/main/3488-closest-equal-element-queries/) | Medium |
 | [3567-minimum-absolute-difference-in-sliding-submatrix](https://github.com/jeonjeon/leetcode/tree/main/3567-minimum-absolute-difference-in-sliding-submatrix/) | Medium |
 | [3643-flip-square-submatrix-vertically](https://github.com/jeonjeon/leetcode/tree/main/3643-flip-square-submatrix-vertically/) | Easy |
@@ -107,12 +108,14 @@ chrome leethub 테스트 겸 깃헙 잔디 작업 겸
 | [1622-fancy-sequence](https://github.com/jeonjeon/leetcode/tree/main/1622-fancy-sequence/) | Hard |
 | [2946-matrix-similarity-after-cyclic-shifts](https://github.com/jeonjeon/leetcode/tree/main/2946-matrix-similarity-after-cyclic-shifts/) | Easy |
 | [3296-minimum-number-of-seconds-to-make-mountain-height-zero](https://github.com/jeonjeon/leetcode/tree/main/3296-minimum-number-of-seconds-to-make-mountain-height-zero/) | Medium |
+| [3464-maximize-the-distance-between-points-on-a-square](https://github.com/jeonjeon/leetcode/tree/main/3464-maximize-the-distance-between-points-on-a-square/) | Hard |
 | [3761-minimum-absolute-distance-between-mirror-pairs](https://github.com/jeonjeon/leetcode/tree/main/3761-minimum-absolute-distance-between-mirror-pairs/) | Medium |
 ## Binary Search
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [1855-maximum-distance-between-a-pair-of-values](https://github.com/jeonjeon/leetcode/tree/main/1855-maximum-distance-between-a-pair-of-values/) | Medium |
 | [3296-minimum-number-of-seconds-to-make-mountain-height-zero](https://github.com/jeonjeon/leetcode/tree/main/3296-minimum-number-of-seconds-to-make-mountain-height-zero/) | Medium |
+| [3464-maximize-the-distance-between-points-on-a-square](https://github.com/jeonjeon/leetcode/tree/main/3464-maximize-the-distance-between-points-on-a-square/) | Hard |
 | [3488-closest-equal-element-queries](https://github.com/jeonjeon/leetcode/tree/main/3488-closest-equal-element-queries/) | Medium |
 ## Greedy
 | Problem Name | Difficulty |
@@ -136,6 +139,7 @@ chrome leethub 테스트 겸 깃헙 잔디 작업 겸
 | ------- | ------- |
 | [2463-minimum-total-distance-traveled](https://github.com/jeonjeon/leetcode/tree/main/2463-minimum-total-distance-traveled/) | Hard |
 | [2840-check-if-strings-can-be-made-equal-with-operations-ii](https://github.com/jeonjeon/leetcode/tree/main/2840-check-if-strings-can-be-made-equal-with-operations-ii/) | Medium |
+| [3464-maximize-the-distance-between-points-on-a-square](https://github.com/jeonjeon/leetcode/tree/main/3464-maximize-the-distance-between-points-on-a-square/) | Hard |
 | [3567-minimum-absolute-difference-in-sliding-submatrix](https://github.com/jeonjeon/leetcode/tree/main/3567-minimum-absolute-difference-in-sliding-submatrix/) | Medium |
 ## Two Pointers
 | Problem Name | Difficulty |
@@ -163,4 +167,8 @@ chrome leethub 테스트 겸 깃헙 잔디 작업 겸
 | Problem Name | Difficulty |
 | ------- | ------- |
 | [2833-furthest-point-from-origin](https://github.com/jeonjeon/leetcode/tree/main/2833-furthest-point-from-origin/) | Easy |
+## Geometry
+| Problem Name | Difficulty |
+| ------- | ------- |
+| [3464-maximize-the-distance-between-points-on-a-square](https://github.com/jeonjeon/leetcode/tree/main/3464-maximize-the-distance-between-points-on-a-square/) | Hard |
 <!---LeetCode Topics End-->
