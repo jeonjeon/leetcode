@@ -18,11 +18,9 @@ class Solution {
         if (ny < 0 || ny >= n) continue;
         if (nx < 0 || nx >= m) continue;
         if (visit[ny][nx] == 1) continue;
-        if (paths[grid[ny][nx]].contains((p + 2) % 4)) {
-          q.add((ny, nx));
-        }
+        if (!paths[grid[ny][nx]].contains((p + 2) % 4)) continue;
+        q.add((ny, nx));
       }
-      print(q);
     }
     return false;
   }
